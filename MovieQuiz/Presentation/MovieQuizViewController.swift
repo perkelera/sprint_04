@@ -3,9 +3,11 @@ import UIKit
 final class MovieQuizViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
+        imageView.layer.cornerRadius = 15
+        imageView.clipsToBounds = true
         let firstQuestion = questions[currentQuestionIndex]
-           let viewModel = convert(model: firstQuestion)
-           show(quiz: viewModel)
+        let viewModel = convert(model: firstQuestion)
+        show(quiz: viewModel)
     }
     @IBOutlet private var counterLabel: UILabel!
     @IBOutlet private var textLabel: UILabel!
@@ -105,7 +107,7 @@ final class MovieQuizViewController: UIViewController {
             
             show(quiz: viewModel)
         }
-imageView.layer.borderWidth = 0
+        imageView.layer.borderWidth = 0
     }
     private func show(quiz result: QuizResultsViewModel) {
         let alert = UIAlertController(
@@ -126,28 +128,28 @@ imageView.layer.borderWidth = 0
         
         self.present(alert, animated: true, completion: nil)
     }
-        }
+}
 
-    
-    
-    struct QuizQuestion {
-        let image: String
-        let text: String
-        let correctAnswer: Bool
-    }
-    struct ViewModel {
-        let image: UIImage
-        let question: String
-        let questionNumber: String
-    }
-    struct QuizStepViewModel {
-        let image: UIImage
-        let question: String
-        let questionNumber: String
-    }
-    struct QuizResultsViewModel {
-        let title: String
-        let text: String
-        let buttonText: String
-    }
-    
+
+
+struct QuizQuestion {
+    let image: String
+    let text: String
+    let correctAnswer: Bool
+}
+struct ViewModel {
+    let image: UIImage
+    let question: String
+    let questionNumber: String
+}
+struct QuizStepViewModel {
+    let image: UIImage
+    let question: String
+    let questionNumber: String
+}
+struct QuizResultsViewModel {
+    let title: String
+    let text: String
+    let buttonText: String
+}
+
